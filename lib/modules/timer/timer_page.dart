@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meditate_app/data/models/timing.dart';
+import 'package:meditate_app/data/models/journal_models.dart';
 import 'package:meditate_app/modules/timer/timer_clock.dart';
 
 class TimerPage extends StatelessWidget {
