@@ -21,4 +21,14 @@ class JournalCubit extends Cubit<JournalState> {
       isLoaded: true
     ));
   }
+
+  void addEntry(DateTime date, Duration duration) {
+    List<JournalItemModel> list = state.journalModel.journalModel;
+    list.add(JournalItemModel(date: date, duration: duration));
+
+    emit(JournalState(
+      journalModel: JournalModel(journalModel: list),
+      isLoaded: true
+    ));
+  }
 }

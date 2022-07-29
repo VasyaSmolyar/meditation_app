@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:meditate_app/modules/timer/timer_button.dart';
+import 'package:meditate_app/modules/timer/button_panel.dart';
 import 'package:meditate_app/modules/timer/timer_text.dart';
 
 class TimerClock extends StatefulWidget {
@@ -19,6 +19,7 @@ class TimerClock extends StatefulWidget {
 class _TimerClockState extends State<TimerClock> {
   late Duration duration;
   bool isPaused = true;
+  bool isStarted = false;
 
   @override
   void initState() {
@@ -58,9 +59,11 @@ class _TimerClockState extends State<TimerClock> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TimerText(duration: duration),
-          TimerButton(
+          ButtonPanel(
             isPaused: isPaused, 
-            onPressed: onPressed
+            onPause: onPressed,
+            isStarted: isStarted,
+            onSave: () {},
           )
         ],
       ),
