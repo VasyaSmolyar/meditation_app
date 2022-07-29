@@ -23,7 +23,7 @@ class JournalCubit extends Cubit<JournalState> {
   }
 
   void addEntry(DateTime date, Duration duration) {
-    List<JournalItemModel> list = state.journalModel.journalModel;
+    List<JournalItemModel> list = [...state.journalModel.journalModel];
     list.add(
       JournalItemModel(
         id: date.toString(),
@@ -39,7 +39,7 @@ class JournalCubit extends Cubit<JournalState> {
   }
 
   void removeEntry(String id) {
-    List<JournalItemModel> list = state.journalModel.journalModel;
+    List<JournalItemModel> list = [...state.journalModel.journalModel];
     list = list.where((element) => element.id != id).toList();
 
     emit(JournalState(

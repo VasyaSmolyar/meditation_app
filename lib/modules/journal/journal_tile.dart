@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:meditate_app/data/models/journal_models.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meditate_app/domain/app/cubit/journal_cubit.dart';
 
 class JournalTile extends StatelessWidget {
   const JournalTile({
@@ -19,7 +21,8 @@ class JournalTile extends StatelessWidget {
         dismissible: DismissiblePane(onDismissed: () {}),
         children: [
           SlidableAction(
-            onPressed: (context) {},
+            onPressed: (context) => 
+              context.read<JournalCubit>().removeEntry(itemModel.id),
             backgroundColor: const Color(0xFFFE4A49),
             foregroundColor: Colors.white,
             icon: Icons.delete,
@@ -30,6 +33,9 @@ class JournalTile extends StatelessWidget {
       child: ListTile(
         title: Text(
           itemModel.date.toString()
+        ),
+        subtitle: Text(
+          itemModel.duration.toString()
         ),
         trailing: const Icon(
           Icons.lock_clock

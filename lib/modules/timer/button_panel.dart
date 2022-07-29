@@ -19,9 +19,9 @@ class ButtonPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 150,
+      width: 180,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           TimerButton(isPaused: isPaused, onPressed: onPause),
           if (isStarted) SaveButton(onPressed: onSave)

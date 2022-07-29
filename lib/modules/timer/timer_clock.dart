@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:meditate_app/modules/timer/button_panel.dart';
 import 'package:meditate_app/modules/timer/timer_text.dart';
@@ -7,10 +7,12 @@ import 'package:meditate_app/modules/timer/timer_text.dart';
 class TimerClock extends StatefulWidget {
   const TimerClock({
     Key? key,
-    required this.timing
+    required this.timing,
+    required this.onSave
   }) : super(key: key);
 
   final Duration timing;
+  final Function(DateTime, Duration) onSave;
 
   @override
   State<TimerClock> createState() => _TimerClockState();
@@ -44,11 +46,21 @@ class _TimerClockState extends State<TimerClock> {
   void onPressed() {
     setState(() {
       isPaused = !isPaused;
+      isStarted = true;
 
       if(!isPaused) {
         scheduleTimeout();
       }
     });
+  }
+
+  void onSave() {
+    widget.onSave(
+      DateTime.now(),
+      widget.timing - duration
+    );
+
+    context.router.pop();
   }
 
   @override
@@ -63,7 +75,7 @@ class _TimerClockState extends State<TimerClock> {
             isPaused: isPaused, 
             onPause: onPressed,
             isStarted: isStarted,
-            onSave: () {},
+            onSave: onSave,
           )
         ],
       ),
