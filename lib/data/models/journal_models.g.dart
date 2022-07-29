@@ -8,12 +8,14 @@ part of 'journal_models.dart';
 
 _$_JournalItemModel _$$_JournalItemModelFromJson(Map<String, dynamic> json) =>
     _$_JournalItemModel(
+      id: json['id'] as String,
       date: DateTime.parse(json['date'] as String),
       duration: Duration(microseconds: json['duration'] as int),
     );
 
 Map<String, dynamic> _$$_JournalItemModelToJson(_$_JournalItemModel instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'date': instance.date.toIso8601String(),
       'duration': instance.duration.inMicroseconds,
     };

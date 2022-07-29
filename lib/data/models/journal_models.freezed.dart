@@ -20,6 +20,7 @@ JournalItemModel _$JournalItemModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$JournalItemModel {
+  String get id => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   Duration get duration => throw _privateConstructorUsedError;
 
@@ -34,7 +35,7 @@ abstract class $JournalItemModelCopyWith<$Res> {
   factory $JournalItemModelCopyWith(
           JournalItemModel value, $Res Function(JournalItemModel) then) =
       _$JournalItemModelCopyWithImpl<$Res>;
-  $Res call({DateTime date, Duration duration});
+  $Res call({String id, DateTime date, Duration duration});
 }
 
 /// @nodoc
@@ -48,10 +49,15 @@ class _$JournalItemModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? date = freezed,
     Object? duration = freezed,
   }) {
     return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       date: date == freezed
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -71,7 +77,7 @@ abstract class _$$_JournalItemModelCopyWith<$Res>
           _$_JournalItemModel value, $Res Function(_$_JournalItemModel) then) =
       __$$_JournalItemModelCopyWithImpl<$Res>;
   @override
-  $Res call({DateTime date, Duration duration});
+  $Res call({String id, DateTime date, Duration duration});
 }
 
 /// @nodoc
@@ -87,10 +93,15 @@ class __$$_JournalItemModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? id = freezed,
     Object? date = freezed,
     Object? duration = freezed,
   }) {
     return _then(_$_JournalItemModel(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       date: date == freezed
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -106,11 +117,14 @@ class __$$_JournalItemModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_JournalItemModel implements _JournalItemModel {
-  const _$_JournalItemModel({required this.date, required this.duration});
+  const _$_JournalItemModel(
+      {required this.id, required this.date, required this.duration});
 
   factory _$_JournalItemModel.fromJson(Map<String, dynamic> json) =>
       _$$_JournalItemModelFromJson(json);
 
+  @override
+  final String id;
   @override
   final DateTime date;
   @override
@@ -118,7 +132,7 @@ class _$_JournalItemModel implements _JournalItemModel {
 
   @override
   String toString() {
-    return 'JournalItemModel(date: $date, duration: $duration)';
+    return 'JournalItemModel(id: $id, date: $date, duration: $duration)';
   }
 
   @override
@@ -126,6 +140,7 @@ class _$_JournalItemModel implements _JournalItemModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_JournalItemModel &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.date, date) &&
             const DeepCollectionEquality().equals(other.duration, duration));
   }
@@ -134,6 +149,7 @@ class _$_JournalItemModel implements _JournalItemModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(date),
       const DeepCollectionEquality().hash(duration));
 
@@ -152,12 +168,15 @@ class _$_JournalItemModel implements _JournalItemModel {
 
 abstract class _JournalItemModel implements JournalItemModel {
   const factory _JournalItemModel(
-      {required final DateTime date,
+      {required final String id,
+      required final DateTime date,
       required final Duration duration}) = _$_JournalItemModel;
 
   factory _JournalItemModel.fromJson(Map<String, dynamic> json) =
       _$_JournalItemModel.fromJson;
 
+  @override
+  String get id;
   @override
   DateTime get date;
   @override

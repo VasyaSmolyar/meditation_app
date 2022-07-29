@@ -13,6 +13,7 @@ abstract class Timing {
 @freezed
 class JournalItemModel with _$JournalItemModel {
   const factory JournalItemModel({
+    required String id,
     required DateTime date,
     required Duration duration,
   }) = _JournalItemModel;
